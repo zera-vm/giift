@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Merry Chirstmas</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+
+<audio id="music" loop preload="auto">
+  <source src="Xmas.mp3" type="audio/mpeg">
+</audio>
+
+<button
+  class="music-button"
+  id="musicButton"
+  type="button"
+  aria-label="Putar atau jeda musik">
+
+  <div class="vinyl"></div>
+
+  <div class="tree-icon">
+    <div class="tree-star">★</div>
+  </div>
+
+</button>
+
+<div class="kado-stage">
+
+  <!-- SCENE KADO -->
+  <div class="kado-scene active" id="giftScene">
+
+    <div class="greeting">
+      <h1 class="greeting-main">Merry Christmas</h1>
+
+      <div class="greeting-decoration">
+        <span></span>
+      </div>
+    </div>
+
+    <div class="kado-box-viewport" id="boxViewport">
+
+      <div class="kado-box3d" id="box3d">
+
+        <div class="kado-face kf-inside"></div>
+
+        <!-- BAGIAN BAWAH -->
+        <div class="kado-face kf-bottom">
+          <div class="ribbon-v"></div>
+          <div class="ribbon-h"></div>
+        </div>
+
+        <!-- SISI KIRI -->
+        <div class="kado-face kf-left">
+          <div class="ribbon-v"></div>
+        </div>
+
+        <!-- SISI KANAN -->
+        <div class="kado-face kf-right">
+          <div class="ribbon-v"></div>
+        </div>
+
+        <!-- BAGIAN BELAKANG -->
+        <div class="kado-face kf-back">
+          <div class="ribbon-v"></div>
+        </div>
+
+        <!-- BAGIAN DEPAN -->
+        <div class="kado-face kf-front">
+          <div class="ribbon-v"></div>
+        </div>
+
+        <!-- TUTUP KADO -->
+        <div class="kado-lid-group">
+
+          <div class="kado-face lid-left">
+            <div class="ribbon-v"></div>
+          </div>
+
+          <div class="kado-face lid-right">
+            <div class="ribbon-v"></div>
+          </div>
+
+          <div class="kado-face lid-back">
+            <div class="ribbon-v"></div>
+          </div>
+
+          <div class="kado-face lid-front">
+            <div class="ribbon-v"></div>
+          </div>
+
+          <div class="kado-face lid-top">
+            <div class="ribbon-v"></div>
+            <div class="ribbon-h"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SCENE KARTU -->
+  <div class="kado-scene" id="cardScene">
+
+    <div class="kado-card-viewport" id="cardViewport">
+
+      <div class="kado-card3d" id="card3d">
+
+        <!-- DEPAN KARTU -->
+        <div class="cf cf-front">
+
+          <img
+            id="giftImage"
+            src="gift.jpg"
+            alt="Kartu hadiah">
+
+        </div>
+
+        <!-- BELAKANG KARTU -->
+        <div class="cf cf-back">
+
+          <p class="to">
+            Vincentia Sissy,
+          </p>
+
+          <p class="message">
+            Selamat Natal,
+            semoga momen bahagia ini memberikanmu
+            kenangan terindah di dalam hidupmu
+          </p>
+
+          <p class="from">
+            — Indra M
+          </p>
+
+        </div>
+
+        <!-- EDGE KARTU -->
+        <div class="cf-edge cf-top"></div>
+        <div class="cf-edge cf-bottom"></div>
+        <div class="cf-edge cf-left"></div>
+        <div class="cf-edge cf-right"></div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="Script.js"></script>
+
+</body>
+</html>

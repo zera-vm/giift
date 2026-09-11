@@ -1,0 +1,1122 @@
+:root{
+  --red:#9e1524;
+  --dark:#650914;
+  --side:#7d0d19;
+  --inside:#43060d;
+
+  --white:#fff;
+  --white2:#f1f1f1;
+  --white3:#d5d5d5;
+
+  --paper:#fbf3e7;
+  --edge:#e4d7c3;
+  --ink:#2b241e;
+  --rose:#c97b84;
+  --sage:#7c9484;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  min-height:100%;
+  overflow-x:hidden;
+  font-family:Inter,sans-serif;
+}
+
+body{
+  position:relative;
+  color:var(--paper);
+  background:#df2941;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+body::before{
+  content:"";
+
+  position:fixed;
+  inset:-480px;
+
+  width:calc(100% + 960px);
+  height:calc(100% + 960px);
+
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #df2941 0 80px,
+      #169452 80px 160px
+    );
+
+  background-size:480px 480px;
+
+  z-index:0;
+  pointer-events:none;
+
+  animation:
+    barberMove 18s linear infinite;
+}
+
+@keyframes barberMove{
+  to{
+    transform:translate3d(480px,480px,0);
+  }
+}
+
+body::after{
+  content:"";
+
+  position:fixed;
+  inset:0;
+
+  z-index:1;
+  pointer-events:none;
+
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.2' opacity='.20' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(18,22)'%3E%3Ccircle cx='12' cy='24' r='9'/%3E%3Cpath d='M4 17L-5 3M4 17L-1 1M20 17L29 3M20 17L23 1'/%3E%3Ccircle cx='9' cy='23' r='1.3' fill='%23ffffff'/%3E%3C/g%3E%3Cg transform='translate(96,98)'%3E%3Cpath d='M0 22L22 22L22 17Q11-6 0 17Z'/%3E%3Ccircle cx='22' cy='17' r='4.5' fill='%23ffffff'/%3E%3C/g%3E%3Cg transform='translate(110,26)'%3E%3Cpath d='M0 10L4 2L8 10L12 2L16 10'/%3E%3C/g%3E%3Cg transform='translate(20,110)'%3E%3Ccircle cx='6' cy='6' r='2'/%3E%3Ccircle cx='18' cy='2' r='1.4'/%3E%3Ccircle cx='2' cy='18' r='1.2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(255,255,255,.09),
+      transparent 42%
+    );
+
+  background-size:
+    180px 180px,
+    100% 100%;
+
+  background-repeat:
+    repeat,
+    no-repeat;
+}
+
+
+/* =========================================================
+   MUSIC BUTTON
+   ========================================================= */
+
+.music-button{
+  position:fixed;
+
+  top:20px;
+  right:20px;
+
+  width:76px;
+  height:76px;
+
+  padding:0;
+  border:0;
+  border-radius:50%;
+
+  background:rgba(255,255,255,.96);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.30),
+    inset 0 0 0 2px rgba(255,255,255,.7);
+
+  z-index:100;
+
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.music-button:hover{
+  transform:scale(1.06);
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.35),
+    inset 0 0 0 2px rgba(255,255,255,.8);
+}
+
+.music-button:active{
+  transform:scale(.96);
+}
+
+
+/* =========================================================
+   VINYL
+   ========================================================= */
+
+.vinyl{
+  position:absolute;
+
+  width:58px;
+  height:58px;
+
+  left:50%;
+  top:50%;
+
+  transform:
+    translate(-50%,-50%)
+    rotate(0deg);
+
+  border-radius:50%;
+
+  background:
+    repeating-radial-gradient(
+      circle at center,
+      #050505 0 2px,
+      #161616 2.5px 3.5px,
+      #030303 4px 5px
+    );
+
+  box-shadow:
+    0 4px 9px rgba(0,0,0,.45),
+    inset 0 0 8px rgba(255,255,255,.10);
+
+  animation:
+    vinylSpin 2.4s linear infinite;
+
+  animation-play-state:paused;
+}
+
+.vinyl::before{
+  content:"";
+
+  position:absolute;
+
+  width:8px;
+  height:18px;
+
+  left:14px;
+  top:7px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,.13);
+
+  transform:rotate(-35deg);
+}
+
+.vinyl::after{
+  content:"";
+
+  position:absolute;
+
+  width:21px;
+  height:21px;
+
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  border-radius:50%;
+
+  background:#9e1524;
+
+  box-shadow:
+    inset 0 0 0 3px #080808,
+    inset 0 0 0 7px #b31b2c;
+}
+
+@keyframes vinylSpin{
+  from{
+    transform:
+      translate(-50%,-50%)
+      rotate(0deg);
+  }
+
+  to{
+    transform:
+      translate(-50%,-50%)
+      rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   CHRISTMAS TREE
+   Pohon tetap hijau
+   ========================================================= */
+
+.tree-icon{
+  position:relative;
+
+  width:38px;
+  height:48px;
+
+  z-index:3;
+
+  filter:
+    drop-shadow(
+      0 2px 3px rgba(0,0,0,.4)
+    );
+}
+
+
+/* BENTUK POHON */
+
+.tree-icon::after{
+  content:"";
+
+  position:absolute;
+
+  left:3px;
+  top:9px;
+
+  width:32px;
+  height:35px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.20),
+      transparent 35%
+    ),
+    #159447;
+
+  clip-path:
+    polygon(
+      50% 0%,
+      88% 35%,
+      70% 35%,
+      100% 62%,
+      76% 62%,
+      100% 100%,
+      0% 100%,
+      24% 62%,
+      0% 62%,
+      30% 35%,
+      12% 35%
+    );
+}
+
+
+/* BATANG POHON */
+
+.tree-icon::before{
+  content:"";
+
+  position:absolute;
+
+  width:9px;
+  height:9px;
+
+  left:15px;
+  bottom:0;
+
+  border-radius:1px;
+
+  background:#75451f;
+}
+
+
+/* =========================================================
+   BINTANG
+   ========================================================= */
+
+.tree-star{
+  position:absolute;
+
+  z-index:5;
+
+  left:50%;
+  top:-2px;
+
+  transform:translateX(-50%);
+
+  font-size:15px;
+  line-height:1;
+
+  animation:
+    starColors 3.6s linear infinite,
+    starGlow 1.2s ease-in-out infinite alternate;
+}
+
+
+/* PERUBAHAN WARNA BINTANG */
+
+@keyframes starColors{
+
+  0%{
+    color:#ffe66d;
+  }
+
+  20%{
+    color:#ff8fab;
+  }
+
+  40%{
+    color:#7bdff2;
+  }
+
+  60%{
+    color:#cdb4db;
+  }
+
+  80%{
+    color:#ff9f1c;
+  }
+
+  100%{
+    color:#ffe66d;
+  }
+}
+
+
+/* CAHAYA BINTANG */
+
+@keyframes starGlow{
+
+  from{
+    text-shadow:
+      0 0 3px currentColor,
+      0 0 7px currentColor;
+  }
+
+  to{
+    text-shadow:
+      0 0 6px currentColor,
+      0 0 14px currentColor;
+  }
+}
+
+
+/* =========================================================
+   TREE + VINYL BERPUTAR BERSAMA
+   ========================================================= */
+
+.music-button.playing .vinyl{
+  animation-play-state:running;
+}
+
+.music-button.playing .tree-icon{
+  animation:
+    treeSpin 2.4s linear infinite;
+}
+
+@keyframes treeSpin{
+
+  from{
+    transform:rotate(0deg);
+  }
+
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   STAGE
+   ========================================================= */
+
+.kado-stage{
+  position:relative;
+
+  z-index:2;
+
+  min-height:100vh;
+
+  padding:32px 20px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+}
+
+.kado-scene{
+  display:none;
+
+  width:100%;
+  max-width:440px;
+
+  text-align:center;
+
+  flex-direction:column;
+  align-items:center;
+}
+
+.kado-scene.active{
+  display:flex;
+}
+
+
+/* =========================================================
+   GREETING
+   ========================================================= */
+
+.greeting{
+  margin:0 0 34px;
+
+  position:relative;
+
+  z-index:2;
+}
+
+.greeting-main{
+  margin:0;
+
+  font:
+    600 clamp(2.1rem,9vw,3.4rem)/1.05
+    Fraunces,
+    serif;
+
+  font-style:italic;
+
+  letter-spacing:-.025em;
+
+  text-shadow:
+    0 3px 0 rgba(101,9,20,.45),
+    0 7px 18px rgba(0,0,0,.28);
+}
+
+.greeting-decoration{
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:10px;
+
+  margin-top:13px;
+}
+
+.greeting-decoration span{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:#fff;
+
+  box-shadow:
+    0 0 8px rgba(255,255,255,.8);
+}
+
+.greeting-decoration::before,
+.greeting-decoration::after{
+  content:"";
+
+  width:52px;
+  height:2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.85),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   GIFT BOX
+   ========================================================= */
+
+.kado-box-viewport{
+  width:260px;
+  height:260px;
+
+  position:relative;
+
+  margin:auto;
+
+  perspective:1000px;
+
+  touch-action:none;
+
+  cursor:grab;
+}
+
+.kado-box-viewport:active{
+  cursor:grabbing;
+}
+
+.kado-box3d{
+  position:relative;
+
+  width:100%;
+  height:100%;
+
+  transform-style:preserve-3d;
+
+  transform:
+    rotateX(-14deg)
+    rotateY(-30deg);
+}
+
+.kado-face{
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  transform-style:preserve-3d;
+
+  background:
+    linear-gradient(
+      160deg,
+      #c91d32,
+      var(--red)
+    );
+
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.18);
+
+  overflow:hidden;
+}
+
+.kf-front,
+.kf-back,
+.kf-right,
+.kf-left,
+.kf-bottom,
+.kf-inside{
+  width:150px;
+  height:150px;
+
+  margin:-75px 0 0 -75px;
+}
+
+.kf-front{
+  transform:translateZ(75px);
+}
+
+.kf-back{
+  transform:
+    rotateY(180deg)
+    translateZ(75px);
+}
+
+.kf-right,
+.kf-left{
+  background:
+    linear-gradient(
+      160deg,
+      var(--red),
+      var(--side)
+    );
+}
+
+.kf-right{
+  transform:
+    rotateY(90deg)
+    translateZ(75px);
+}
+
+.kf-left{
+  transform:
+    rotateY(-90deg)
+    translateZ(75px);
+}
+
+.kf-bottom{
+  transform:
+    rotateX(-90deg)
+    translateZ(75px);
+
+  background:var(--dark);
+}
+
+.kf-inside{
+  transform:
+    rotateX(90deg)
+    translateZ(75px);
+
+  background:var(--inside);
+}
+
+
+/* =========================================================
+   RIBBON
+   ========================================================= */
+
+.ribbon-v,
+.ribbon-h{
+  position:absolute;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--white3),
+      var(--white2) 25%,
+      var(--white) 50%,
+      var(--white2) 75%,
+      var(--white3)
+    );
+
+  box-shadow:
+    0 2px 5px rgba(0,0,0,.35),
+    inset 1px 0 rgba(255,255,255,.5),
+    inset -1px 0 rgba(0,0,0,.2);
+}
+
+.ribbon-v{
+  top:0;
+  left:50%;
+
+  width:26px;
+  height:100%;
+
+  margin-left:-13px;
+}
+
+.ribbon-h{
+  top:50%;
+  left:0;
+
+  width:100%;
+  height:26px;
+
+  margin-top:-13px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--white3),
+      var(--white2) 25%,
+      var(--white) 50%,
+      var(--white2) 75%,
+      var(--white3)
+    );
+}
+
+
+/* =========================================================
+   LID
+   ========================================================= */
+
+.kado-lid-group{
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  width:0;
+  height:0;
+
+  transform:
+    translateY(-68px);
+
+  transform-style:preserve-3d;
+
+  transition:
+    .65s cubic-bezier(.4,.1,.3,1);
+}
+
+.kado-box3d.open .kado-lid-group{
+  transform:
+    translateY(-230px)
+    translateZ(70px)
+    rotateX(-115deg);
+
+  opacity:0;
+}
+
+.lid-top,
+.lid-front,
+.lid-back,
+.lid-right,
+.lid-left{
+  position:absolute;
+
+  background:
+    linear-gradient(
+      160deg,
+      #c91d32,
+      var(--red)
+    );
+}
+
+.lid-top{
+  width:158px;
+  height:158px;
+
+  margin:-79px 0 0 -79px;
+
+  transform:
+    rotateX(90deg)
+    translateZ(18px);
+}
+
+.lid-front,
+.lid-back,
+.lid-right,
+.lid-left{
+  width:158px;
+  height:36px;
+
+  margin:-18px 0 0 -79px;
+}
+
+.lid-front{
+  transform:
+    translateZ(79px);
+}
+
+.lid-back{
+  transform:
+    rotateY(180deg)
+    translateZ(79px);
+}
+
+.lid-right,
+.lid-left{
+  background:var(--side);
+}
+
+.lid-right{
+  transform:
+    rotateY(90deg)
+    translateZ(79px);
+}
+
+.lid-left{
+  transform:
+    rotateY(-90deg)
+    translateZ(79px);
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.kado-card-viewport{
+  width:240px;
+  height:300px;
+
+  margin:4px auto 0;
+
+  perspective:1400px;
+
+  touch-action:none;
+
+  cursor:grab;
+}
+
+.kado-card-viewport:active{
+  cursor:grabbing;
+}
+
+.kado-card3d{
+  width:240px;
+  height:300px;
+
+  position:relative;
+
+  transform-style:preserve-3d;
+
+  transform:
+    rotateX(-8deg)
+    rotateY(-16deg);
+
+  border-radius:16px;
+}
+
+.cf{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  border-radius:16px;
+
+  overflow:hidden;
+
+  background:var(--paper);
+
+  box-shadow:
+    0 20px 44px rgba(0,0,0,.4);
+
+  backface-visibility:hidden;
+
+  clip-path:
+    inset(0 round 16px);
+}
+
+.cf-front{
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  transform:translateZ(1px);
+
+  background:var(--paper);
+}
+
+.cf-front img{
+  display:block;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  border-radius:16px;
+
+  cursor:pointer;
+
+  user-select:none;
+
+  -webkit-user-drag:none;
+
+  pointer-events:auto;
+}
+
+.cf-back{
+  transform:
+    rotateY(180deg)
+    translateZ(1px);
+
+  padding:24px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  color:var(--ink);
+
+  text-align:left;
+}
+
+.to{
+  margin:0 0 10px;
+
+  font:
+    italic 1rem Fraunces,
+    serif;
+
+  color:var(--rose);
+}
+
+.message{
+  margin:0;
+
+  font:
+    1rem/1.55 Fraunces,
+    serif;
+}
+
+.from{
+  margin-top:16px;
+
+  font-size:.82rem;
+
+  color:var(--sage);
+}
+
+
+/* =========================================================
+   CARD BORDER
+   ========================================================= */
+
+.cf::after{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  border-radius:16px;
+
+  border:
+    1px solid rgba(228,215,195,.85);
+
+  pointer-events:none;
+
+  z-index:10;
+}
+
+
+/* EDGE KARTU DISEMBUNYIKAN */
+
+.cf-edge{
+  display:none!important;
+}
+
+
+/* =========================================================
+   SPARK EFFECT
+   ========================================================= */
+
+.spark{
+  position:absolute;
+
+  border-radius:50%;
+
+  pointer-events:none;
+
+  animation:
+    spark .9s ease-out forwards;
+
+  z-index:20;
+}
+
+@keyframes spark{
+
+  to{
+    transform:
+      translate(var(--dx),var(--dy))
+      scale(0);
+
+    opacity:0;
+  }
+}
+
+
+/* =========================================================
+   SNOW
+   ========================================================= */
+
+.snow-container{
+  position:fixed;
+
+  inset:0;
+
+  overflow:hidden;
+
+  pointer-events:none;
+
+  z-index:3;
+}
+
+.snowflake{
+  position:absolute;
+
+  top:-10px;
+
+  background:#fff;
+
+  border-radius:50%;
+
+  animation:
+    snowfall linear infinite,
+    sway ease-in-out infinite;
+}
+
+@keyframes snowfall{
+
+  to{
+    transform:
+      translateY(110vh);
+  }
+}
+
+@keyframes sway{
+
+  50%{
+    margin-left:18px;
+  }
+}
+
+
+/* =========================================================
+   CARD ANIMATION
+   ========================================================= */
+
+@keyframes cardIn{
+
+  from{
+    opacity:0;
+
+    transform:
+      rotateX(-8deg)
+      rotateY(-16deg)
+      scale(.8)
+      translateY(12px);
+  }
+
+  to{
+    opacity:1;
+
+    transform:
+      rotateX(-8deg)
+      rotateY(-16deg)
+      scale(1)
+      translateY(0);
+  }
+}
+
+.kado-card3d.entering{
+  animation:
+    cardIn .55s
+    cubic-bezier(.2,.8,.3,1.2)
+    both;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:600px){
+
+  .greeting-main{
+    font-size:
+      clamp(2.1rem,9vw,3rem);
+  }
+
+  .music-button{
+    width:68px;
+    height:68px;
+
+    top:14px;
+    right:14px;
+  }
+
+  .vinyl{
+    width:52px;
+    height:52px;
+  }
+
+  .tree-icon{
+    transform:scale(.92);
+  }
+
+  .kado-card-viewport{
+    width:240px;
+    height:300px;
+  }
+
+  .kado-card3d{
+    width:240px;
+    height:300px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  body::before{
+    animation-duration:.01ms!important;
+  }
+
+  .tree-star,
+  .vinyl{
+    animation-duration:.01ms!important;
+  }
+
+  *{
+    transition-duration:.01ms!important;
+  }
+}
