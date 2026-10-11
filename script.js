@@ -967,7 +967,7 @@ function terbang(){
     const sekarang = performance.now();
 
     if(
-      jumlah < 24 &&
+      jumlah < 0 &&
       sekarang - terakhir > 350 &&
       Math.random() < .6
     ){
