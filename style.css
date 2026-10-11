@@ -1120,3 +1120,352 @@ body::after{
     transition-duration:.01ms!important;
   }
 }
+
+
+/* =========================================================
+   ✨ BARU: BISKUIT JAHE (SETENGAH BADAN, MIRING)
+   ========================================================= */
+
+.biskuit{
+  position:fixed;
+
+  left:-28px;
+  bottom:-42px;
+
+  width:200px;
+  height:200px;
+
+  transform:rotate(14deg);
+  transform-origin:50% 100%;
+
+  z-index:50;
+  pointer-events:none;
+}
+
+.biskuit svg{
+  display:block;
+  overflow:visible;
+
+  filter:
+    drop-shadow(0 4px 6px rgba(0,0,0,.35));
+}
+
+/* ----- keadaan awal: tenang ----- */
+
+.figur{
+  transform-origin:100px 200px;
+
+  animation:
+    biskuitNapas 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes biskuitNapas{
+
+  from{
+    transform:translateY(0);
+  }
+
+  to{
+    transform:translateY(-3px);
+  }
+}
+
+.lambai{
+  transform-origin:0 0;
+  transform:rotate(95deg);
+}
+
+.mata-tutup,
+.senyum-lebar{
+  opacity:0;
+}
+
+.mata-buka,
+.mata-tutup,
+.senyum-kecil,
+.senyum-lebar{
+  transition:opacity .2s ease;
+}
+
+.pipi{
+  transform-box:fill-box;
+  transform-origin:center;
+
+  transition:
+    transform .3s ease,
+    opacity .3s ease;
+}
+
+
+/* ----- setelah kado dipencet: bahagia ----- */
+
+.biskuit.senang .mata-buka,
+.biskuit.senang .senyum-kecil{
+  opacity:0;
+}
+
+.biskuit.senang .mata-tutup,
+.biskuit.senang .senyum-lebar{
+  opacity:1;
+}
+
+.biskuit.senang .pipi{
+  transform:scale(1.35);
+  opacity:.9;
+}
+
+.biskuit.senang .figur{
+  animation:
+    biskuitGoyang .8s ease-in-out infinite alternate;
+}
+
+@keyframes biskuitGoyang{
+
+  from{
+    transform:rotate(-2.5deg);
+  }
+
+  to{
+    transform:rotate(2.5deg);
+  }
+}
+
+.biskuit.senang .lambai{
+  animation:
+    lambaiNaik .5s ease-out forwards,
+    lambaiTangan .55s ease-in-out .5s infinite alternate;
+}
+
+@keyframes lambaiNaik{
+
+  from{
+    transform:rotate(95deg);
+  }
+
+  to{
+    transform:rotate(-16deg);
+  }
+}
+
+@keyframes lambaiTangan{
+
+  from{
+    transform:rotate(-16deg);
+  }
+
+  to{
+    transform:rotate(16deg);
+  }
+}
+
+
+@media(max-width:600px){
+
+  .biskuit{
+    width:170px;
+    height:170px;
+
+    left:-22px;
+    bottom:-36px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  .figur,
+  .biskuit.senang .figur,
+  .biskuit.senang .lambai{
+    animation:none;
+  }
+
+  .biskuit.senang .lambai{
+    transform:rotate(-10deg);
+  }
+}
+
+
+/* =========================================================
+   ✨ BARU: KERETA RUSA PUTIH + KADO, TERBANG ACAK
+   ========================================================= */
+
+.rusa-terbang{
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:340px;
+  height:131px;
+
+  z-index:1;
+  pointer-events:none;
+
+  /* disembunyikan sampai terbang (diatur script.js) */
+  visibility:hidden;
+
+  will-change:transform;
+}
+
+.rusa-terbang svg{
+  display:block;
+  overflow:visible;
+
+  filter:
+    drop-shadow(0 0 5px rgba(255,255,255,.85))
+    drop-shadow(0 0 14px rgba(255,255,255,.4));
+}
+
+.terbang-naik-turun{
+  animation:
+    rusaNaikTurun 1.3s ease-in-out infinite alternate;
+}
+
+@keyframes rusaNaikTurun{
+
+  from{
+    transform:translateY(-4px);
+  }
+
+  to{
+    transform:translateY(5px);
+  }
+}
+
+/* badan rusa naik-turun mengikuti langkah */
+.lompat{
+  animation:
+    rusaLompat .45s ease-in-out infinite alternate;
+}
+
+@keyframes rusaLompat{
+
+  from{
+    transform:translateY(-3px) rotate(-2deg);
+  }
+
+  to{
+    transform:translateY(3px) rotate(2deg);
+  }
+}
+
+/* ----- gerakan kaki berlari ----- */
+
+.kb{ --d:-.225s; }
+.lompat.l2{ --fase:-.2s; }
+
+.paha,
+.betis{
+  transform-origin:0 0;
+
+  animation-duration:.45s;
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+  animation-direction:alternate;
+
+  animation-delay:
+    calc(var(--fase,0s) + var(--d,0s));
+}
+
+.depan-atas{
+  animation-name:kakiDepanAtas;
+}
+
+.depan-bawah{
+  animation-name:kakiDepanBawah;
+}
+
+.belakang-atas{
+  animation-name:kakiBelakangAtas;
+}
+
+.belakang-bawah{
+  animation-name:kakiBelakangBawah;
+}
+
+@keyframes kakiDepanAtas{
+  from{ transform:rotate(-45deg); }
+  to{   transform:rotate(30deg);  }
+}
+
+@keyframes kakiDepanBawah{
+  from{ transform:rotate(5deg);  }
+  to{   transform:rotate(75deg); }
+}
+
+@keyframes kakiBelakangAtas{
+  from{ transform:rotate(30deg);  }
+  to{   transform:rotate(-35deg); }
+}
+
+@keyframes kakiBelakangBawah{
+  from{ transform:rotate(-5deg);  }
+  to{   transform:rotate(-70deg); }
+}
+
+/* ----- kerlip bintang ----- */
+
+.kerlip{
+  transform-box:fill-box;
+  transform-origin:center;
+
+  animation:
+    kerlipBintang 1s ease-in-out infinite alternate;
+}
+
+.kerlip.k2{ animation-delay:.25s; }
+.kerlip.k3{ animation-delay:.5s; }
+.kerlip.k4{ animation-delay:.75s; }
+
+@keyframes kerlipBintang{
+
+  from{
+    opacity:.25;
+    scale:.6;
+  }
+
+  to{
+    opacity:1;
+    scale:1.15;
+  }
+}
+
+@media(max-width:600px){
+
+  .rusa-terbang{
+    width:280px;
+    height:108px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  .rusa-terbang{
+    display:none;
+  }
+}
+
+
+/* ----- kado yang jatuh dari kereta ----- */
+
+.kado-jatuh{
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  z-index:1;
+  pointer-events:none;
+
+  will-change:transform;
+}
+
+.kado-jatuh div{
+  will-change:transform;
+}
+
+.kado-jatuh svg{
+  display:block;
+
+  filter:
+    drop-shadow(0 2px 3px rgba(0,0,0,.35));
+}
