@@ -13,6 +13,101 @@
 
 <body>
 
+<!-- ✨ BARU: biskuit jahe setengah badan di sudut kiri bawah -->
+<div class="biskuit" aria-hidden="true">
+  <svg viewBox="0 0 200 200" width="100%" height="100%">
+
+    <g class="figur">
+
+      <!-- garis icing putih (lapisan belakang) -->
+      <g fill="#fff" stroke="#fff" stroke-width="10"
+         stroke-linejoin="round" stroke-linecap="round">
+
+        <circle cx="100" cy="70" r="38"/>
+        <rect x="62" y="104" width="76" height="130" rx="28"/>
+
+        <path d="M72 128 L34 168" fill="none" stroke-width="38"/>
+
+        <g transform="translate(128 126)">
+          <g class="lambai">
+            <path d="M0 0 L44 -44" fill="none" stroke-width="38"/>
+          </g>
+        </g>
+
+      </g>
+
+      <!-- badan roti jahe -->
+      <g fill="#c7803c">
+
+        <circle cx="100" cy="70" r="38"/>
+        <rect x="62" y="104" width="76" height="130" rx="28"/>
+
+        <path d="M72 128 L34 168" fill="none" stroke="#c7803c"
+              stroke-width="28" stroke-linecap="round"/>
+
+        <g transform="translate(128 126)">
+          <g class="lambai">
+            <path d="M0 0 L44 -44" fill="none" stroke="#c7803c"
+                  stroke-width="28" stroke-linecap="round"/>
+            <circle cx="44" cy="-44" r="6" fill="#fff"/>
+          </g>
+        </g>
+
+      </g>
+
+      <circle cx="34" cy="168" r="6" fill="#fff"/>
+
+      <!-- pipi -->
+      <circle class="pipi" cx="70"  cy="82" r="7" fill="#ff8aa0" opacity=".7"/>
+      <circle class="pipi" cx="130" cy="82" r="7" fill="#ff8aa0" opacity=".7"/>
+
+      <!-- mata terbuka -->
+      <g class="mata-buka">
+        <circle cx="84"  cy="66" r="5" fill="#4a2511"/>
+        <circle cx="116" cy="66" r="5" fill="#4a2511"/>
+        <circle cx="85.6"  cy="64.4" r="1.6" fill="#fff"/>
+        <circle cx="117.6" cy="64.4" r="1.6" fill="#fff"/>
+      </g>
+
+      <!-- mata tertutup (bahagia) -->
+      <g class="mata-tutup" fill="none" stroke="#4a2511"
+         stroke-width="4" stroke-linecap="round">
+        <path d="M76 68 Q84 57 92 68"/>
+        <path d="M108 68 Q116 57 124 68"/>
+      </g>
+
+      <!-- senyum kecil -->
+      <path class="senyum-kecil" d="M87 84 Q100 95 113 84"
+            fill="none" stroke="#4a2511"
+            stroke-width="3.5" stroke-linecap="round"/>
+
+      <!-- senyum lebar -->
+      <g class="senyum-lebar">
+        <path d="M80 80 Q100 84 120 80 Q118 106 100 106 Q82 106 80 80 Z"
+              fill="#4a2511" stroke="#4a2511"
+              stroke-width="3" stroke-linejoin="round"/>
+        <path d="M90 101 Q100 93 110 101 Q100 108 90 101 Z" fill="#ff8aa0"/>
+      </g>
+
+      <!-- topi natal -->
+      <g class="topi" transform="rotate(-10 100 40)">
+        <path d="M68 38 C68 10 90 -8 116 -8 C132 -8 144 0 150 14 C140 8 134 18 134 38 Z"
+              fill="#e0162f" stroke="#9e0f20" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="150" cy="15" r="9" fill="#fff" stroke="#e3e3e3" stroke-width="1"/>
+        <rect x="62" y="30" width="78" height="18" rx="9"
+              fill="#fff" stroke="#e3e3e3" stroke-width="1"/>
+      </g>
+
+      <!-- kancing -->
+      <circle cx="100" cy="128" r="6" fill="#e0162f"/>
+      <circle cx="100" cy="152" r="6" fill="#169452"/>
+      <circle cx="98" cy="126" r="1.8" fill="#fff" opacity=".85"/>
+      <circle cx="98" cy="150" r="1.8" fill="#fff" opacity=".85"/>
+
+    </g>
+  </svg>
+</div>
+
 <audio id="music" loop preload="auto">
   <source src="Xmas.mp3" type="audio/mpeg">
 </audio>
@@ -30,6 +125,138 @@
   </div>
 
 </button>
+
+<!-- ✨ BARU: kereta rusa putih (tanpa Santa) membawa banyak kado, terbang acak di latar belakang -->
+<div class="rusa-terbang" aria-hidden="true">
+  <svg viewBox="0 0 440 170" width="100%" height="100%">
+
+    <defs>
+      <!-- satu ekor rusa (siluet putih, kepala menghadap kanan) -->
+      <g id="rusa" fill="#fff" stroke="#fff"
+         stroke-linecap="round" stroke-linejoin="round">
+
+        <!-- tanduk jauh -->
+        <g fill="none" stroke-width="2.6" transform="translate(7 2) scale(.92)">
+          <path d="M46 -41 C43 -52 37 -62 24 -70 C20 -72 16 -73 12 -72"/>
+          <path d="M43 -49 C50 -53 54 -60 54 -68"/>
+          <path d="M37 -58 C44 -62 47 -70 45 -80"/>
+          <path d="M29 -66 C34 -72 35 -80 31 -88"/>
+        </g>
+
+        <!-- kaki (bergerak berlari) -->
+        <g transform="translate(20 6)" class="kb">
+          <g class="paha depan-atas">
+            <path d="M0 0 L0 17" fill="none" stroke-width="7"/>
+            <g transform="translate(0 17)">
+              <g class="betis depan-bawah">
+                <path d="M0 0 L0 17" fill="none" stroke-width="4.5"/>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g transform="translate(-16 6)" class="kb">
+          <g class="paha belakang-atas">
+            <path d="M0 0 L0 18" fill="none" stroke-width="8"/>
+            <g transform="translate(0 18)">
+              <g class="betis belakang-bawah">
+                <path d="M0 0 L0 18" fill="none" stroke-width="5"/>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g transform="translate(25 4)" class="ka">
+          <g class="paha depan-atas">
+            <path d="M0 0 L0 17" fill="none" stroke-width="8"/>
+            <g transform="translate(0 17)">
+              <g class="betis depan-bawah">
+                <path d="M0 0 L0 17" fill="none" stroke-width="5"/>
+              </g>
+            </g>
+          </g>
+        </g>
+        <g transform="translate(-23 4)" class="ka">
+          <g class="paha belakang-atas">
+            <path d="M0 0 L0 18" fill="none" stroke-width="9"/>
+            <g transform="translate(0 18)">
+              <g class="betis belakang-bawah">
+                <path d="M0 0 L0 18" fill="none" stroke-width="5.5"/>
+              </g>
+            </g>
+          </g>
+        </g>
+
+        <!-- ekor -->
+        <path d="M-36 -2 Q-46 -10 -43 -15 Q-37 -11 -34 -6 Z" stroke-width=".8"/>
+
+        <!-- badan, leher, kepala -->
+        <path d="M-36 -2 C-34 -12 -18 -16 -2 -14 C10 -13 18 -14 24 -20
+                 C30 -28 34 -36 42 -40 C46 -42 50 -42 52 -40 L66 -33
+                 C70 -31 70 -27 66 -26 L52 -26 C48 -25 44 -22 42 -16
+                 C40 -8 38 0 30 6 C20 14 0 14 -14 11 C-26 9 -34 6 -36 -2 Z"
+              stroke-width=".8"/>
+
+        <!-- telinga -->
+        <path d="M44 -40 Q38 -51 31 -49 Q35 -42 44 -37 Z" stroke-width=".8"/>
+
+        <!-- tanduk dekat -->
+        <g fill="none" stroke-width="3">
+          <path d="M46 -41 C43 -52 37 -62 24 -70 C20 -72 16 -73 12 -72"/>
+          <path d="M43 -49 C50 -53 54 -60 54 -68"/>
+          <path d="M37 -58 C44 -62 47 -70 45 -80"/>
+          <path d="M29 -66 C34 -72 35 -80 31 -88"/>
+        </g>
+
+      </g>
+    </defs>
+
+    <g class="terbang-naik-turun">
+
+      <!-- tali kekang (pendek) -->
+      <path d="M122 104 L200 100 M258 104 L306 92"
+            fill="none" stroke="#fff" stroke-width="1.8"/>
+
+      <!-- kereta putih -->
+      <g transform="translate(30 120)" fill="#fff" stroke="#fff"
+         stroke-linecap="round" stroke-linejoin="round">
+
+        <path d="M-14 24 L92 24 Q108 24 106 8" fill="none" stroke-width="4.5"/>
+        <path d="M12 12 L12 24 M62 12 L62 24" fill="none" stroke-width="4"/>
+
+        <!-- tumpukan kado berwarna-warni -->
+        <g class="muatan" transform="translate(43 -22) scale(1.3) translate(-43 22)">
+        <g transform="translate(-6 -40)" stroke="none"><rect width="18" height="18" rx="2.5" fill="#ff9f1c"/><rect x="6" width="6" height="18" fill="#fff"/><rect y="6.5" width="18" height="5" fill="#fff"/><ellipse cx="4" cy="-2.5" rx="5" ry="3.6" fill="#fff"/><ellipse cx="14" cy="-2.5" rx="5" ry="3.6" fill="#fff"/><circle cx="9" cy="-1.5" r="2.4" fill="#fff"/></g>
+        <g transform="translate(6 -48)" stroke="none"><rect width="26" height="26" rx="2.5" fill="#ff4d6d"/><rect x="10" width="6" height="26" fill="#ffe066"/><rect y="10.5" width="26" height="5" fill="#ffe066"/><ellipse cx="8" cy="-2.5" rx="5" ry="3.6" fill="#ffe066"/><ellipse cx="18" cy="-2.5" rx="5" ry="3.6" fill="#ffe066"/><circle cx="13" cy="-1.5" r="2.4" fill="#ffe066"/></g>
+        <g transform="translate(34 -52)" stroke="none"><rect width="24" height="24" rx="2.5" fill="#3ec7ff"/><rect x="9" width="6" height="24" fill="#fff"/><rect y="9.5" width="24" height="5" fill="#fff"/><ellipse cx="7" cy="-2.5" rx="5" ry="3.6" fill="#fff"/><ellipse cx="17" cy="-2.5" rx="5" ry="3.6" fill="#fff"/><circle cx="12" cy="-1.5" r="2.4" fill="#fff"/></g>
+        <g transform="translate(58 -50)" stroke="none"><rect width="22" height="22" rx="2.5" fill="#7bff6b"/><rect x="8" width="6" height="22" fill="#ff4d6d"/><rect y="8.5" width="22" height="5" fill="#ff4d6d"/><ellipse cx="6" cy="-2.5" rx="5" ry="3.6" fill="#ff4d6d"/><ellipse cx="16" cy="-2.5" rx="5" ry="3.6" fill="#ff4d6d"/><circle cx="11" cy="-1.5" r="2.4" fill="#ff4d6d"/></g>
+        <g transform="translate(14 -68)" stroke="none"><rect width="20" height="20" rx="2.5" fill="#ffd23f"/><rect x="7" width="6" height="20" fill="#ff4d6d"/><rect y="7.5" width="20" height="5" fill="#ff4d6d"/><ellipse cx="5" cy="-2.5" rx="5" ry="3.6" fill="#ff4d6d"/><ellipse cx="15" cy="-2.5" rx="5" ry="3.6" fill="#ff4d6d"/><circle cx="10" cy="-1.5" r="2.4" fill="#ff4d6d"/></g>
+        <g transform="translate(40 -70)" stroke="none"><rect width="18" height="18" rx="2.5" fill="#b57bff"/><rect x="6" width="6" height="18" fill="#ffe066"/><rect y="6.5" width="18" height="5" fill="#ffe066"/><ellipse cx="4" cy="-2.5" rx="5" ry="3.6" fill="#ffe066"/><ellipse cx="14" cy="-2.5" rx="5" ry="3.6" fill="#ffe066"/><circle cx="9" cy="-1.5" r="2.4" fill="#ffe066"/></g>
+        <g transform="translate(64 -66)" stroke="none"><rect width="16" height="16" rx="2.5" fill="#ff6ad5"/><rect x="5" width="6" height="16" fill="#fff"/><rect y="5.5" width="16" height="5" fill="#fff"/><ellipse cx="3" cy="-2.5" rx="5" ry="3.6" fill="#fff"/><ellipse cx="13" cy="-2.5" rx="5" ry="3.6" fill="#fff"/><circle cx="8" cy="-1.5" r="2.4" fill="#fff"/></g>
+        </g>
+
+        <path d="M0 -26 C30 -26 58 -26 86 -36 C92 -20 84 4 58 10 L12 10 C-10 10 -16 -8 0 -26 Z"
+              stroke-width="1.5"/>
+
+      </g>
+
+      <!-- rusa -->
+      <g transform="translate(232 102) scale(.88)">
+        <g class="lompat l2"><g class="tempat-rusa"></g></g>
+      </g>
+      <g transform="translate(340 90)">
+        <g class="lompat"><g class="tempat-rusa"></g></g>
+      </g>
+
+      <!-- kerlip putih di belakang -->
+      <g fill="#fff">
+        <path class="kerlip k1" transform="translate(-6 120)" d="M0 -6 L1.6 -1.6 L6 0 L1.6 1.6 L0 6 L-1.6 1.6 L-6 0 L-1.6 -1.6 Z"/>
+        <path class="kerlip k2" transform="translate(-30 140) scale(.8)" d="M0 -6 L1.6 -1.6 L6 0 L1.6 1.6 L0 6 L-1.6 1.6 L-6 0 L-1.6 -1.6 Z"/>
+        <path class="kerlip k3" transform="translate(-52 114) scale(.65)" d="M0 -6 L1.6 -1.6 L6 0 L1.6 1.6 L0 6 L-1.6 1.6 L-6 0 L-1.6 -1.6 Z"/>
+        <path class="kerlip k4" transform="translate(-74 132) scale(.55)" d="M0 -6 L1.6 -1.6 L6 0 L1.6 1.6 L0 6 L-1.6 1.6 L-6 0 L-1.6 -1.6 Z"/>
+      </g>
+
+    </g>
+  </svg>
+</div>
 
 <div class="kado-stage">
 
