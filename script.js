@@ -1302,4 +1302,27 @@ document.querySelectorAll(".lonceng-ayun").forEach(lonceng=>{
 
 });
 
-function goyangkanLonce
+function goyangkanLonceng(){
+
+  document.querySelectorAll(".lonceng-ayun").forEach((lonceng,i)=>{
+
+    const bunyikan = ()=>{
+
+      lonceng.classList.remove("berayun");
+
+      void lonceng.getBoundingClientRect();
+
+      lonceng.classList.add("berayun");
+
+      suaraLonceng(parseFloat(lonceng.dataset.nada) || 880);
+
+    };
+
+    if(i === 0)
+      bunyikan();
+    else
+      setTimeout(bunyikan, i*140);
+
+  });
+
+}
