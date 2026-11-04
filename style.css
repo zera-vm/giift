@@ -33,11 +33,6 @@ body{
   background:#df2941;
 }
 
-
-/* =========================================================
-   BACKGROUND
-   ========================================================= */
-
 body::before{
   content:"";
 
@@ -95,11 +90,6 @@ body::after{
     no-repeat;
 }
 
-
-/* =========================================================
-   MUSIC BUTTON
-   ========================================================= */
-
 .music-button{
   position:fixed;
 
@@ -143,11 +133,6 @@ body::after{
 .music-button:active{
   transform:scale(.96);
 }
-
-
-/* =========================================================
-   VINYL
-   ========================================================= */
 
 .vinyl{
   position:absolute;
@@ -236,12 +221,6 @@ body::after{
   }
 }
 
-
-/* =========================================================
-   CHRISTMAS TREE
-   Pohon tetap hijau
-   ========================================================= */
-
 .tree-icon{
   position:relative;
 
@@ -255,9 +234,6 @@ body::after{
       0 2px 3px rgba(0,0,0,.4)
     );
 }
-
-
-/* BENTUK POHON */
 
 .tree-icon::after{
   content:"";
@@ -294,9 +270,6 @@ body::after{
     );
 }
 
-
-/* BATANG POHON */
-
 .tree-icon::before{
   content:"";
 
@@ -312,11 +285,6 @@ body::after{
 
   background:#75451f;
 }
-
-
-/* =========================================================
-   BINTANG
-   ========================================================= */
 
 .tree-star{
   position:absolute;
@@ -335,9 +303,6 @@ body::after{
     starColors 3.6s linear infinite,
     starGlow 1.2s ease-in-out infinite alternate;
 }
-
-
-/* PERUBAHAN WARNA BINTANG */
 
 @keyframes starColors{
 
@@ -366,9 +331,6 @@ body::after{
   }
 }
 
-
-/* CAHAYA BINTANG */
-
 @keyframes starGlow{
 
   from{
@@ -383,11 +345,6 @@ body::after{
       0 0 14px currentColor;
   }
 }
-
-
-/* =========================================================
-   TREE + VINYL BERPUTAR BERSAMA
-   ========================================================= */
 
 .music-button.playing .vinyl{
   animation-play-state:running;
@@ -409,11 +366,6 @@ body::after{
   }
 }
 
-
-/* =========================================================
-   STAGE
-   ========================================================= */
-
 .kado-stage{
   position:relative;
 
@@ -421,7 +373,7 @@ body::after{
 
   min-height:100vh;
 
-  padding:32px 20px;
+  padding:32px 20px 80px;
 
   display:flex;
 
@@ -444,11 +396,6 @@ body::after{
 .kado-scene.active{
   display:flex;
 }
-
-
-/* =========================================================
-   GREETING
-   ========================================================= */
 
 .greeting{
   margin:0 0 34px;
@@ -513,11 +460,6 @@ body::after{
       transparent
     );
 }
-
-
-/* =========================================================
-   GIFT BOX
-   ========================================================= */
 
 .kado-box-viewport{
   width:260px;
@@ -637,11 +579,6 @@ body::after{
   background:var(--inside);
 }
 
-
-/* =========================================================
-   RIBBON
-   ========================================================= */
-
 .ribbon-v,
 .ribbon-h{
   position:absolute;
@@ -691,11 +628,6 @@ body::after{
       var(--white3)
     );
 }
-
-
-/* =========================================================
-   LID
-   ========================================================= */
 
 .kado-lid-group{
   position:absolute;
@@ -787,11 +719,6 @@ body::after{
     rotateY(-90deg)
     translateZ(79px);
 }
-
-
-/* =========================================================
-   CARD
-   ========================================================= */
 
 .kado-card-viewport{
   width:240px;
@@ -921,11 +848,6 @@ body::after{
   color:var(--sage);
 }
 
-
-/* =========================================================
-   CARD BORDER
-   ========================================================= */
-
 .cf::after{
   content:"";
 
@@ -943,17 +865,9 @@ body::after{
   z-index:10;
 }
 
-
-/* EDGE KARTU DISEMBUNYIKAN */
-
 .cf-edge{
   display:none!important;
 }
-
-
-/* =========================================================
-   SPARK EFFECT
-   ========================================================= */
 
 .spark{
   position:absolute;
@@ -978,11 +892,6 @@ body::after{
     opacity:0;
   }
 }
-
-
-/* =========================================================
-   SNOW
-   ========================================================= */
 
 .snow-container{
   position:fixed;
@@ -1025,11 +934,6 @@ body::after{
   }
 }
 
-
-/* =========================================================
-   CARD ANIMATION
-   ========================================================= */
-
 @keyframes cardIn{
 
   from{
@@ -1059,11 +963,6 @@ body::after{
     cubic-bezier(.2,.8,.3,1.2)
     both;
 }
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
 
 @media(max-width:600px){
 
@@ -1100,11 +999,6 @@ body::after{
   }
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
 @media(prefers-reduced-motion:reduce){
 
   body::before{
@@ -1120,11 +1014,6 @@ body::after{
     transition-duration:.01ms!important;
   }
 }
-
-
-/* =========================================================
-   ✨ BARU: BISKUIT JAHE (SETENGAH BADAN, MIRING)
-   ========================================================= */
 
 .biskuit{
   position:fixed;
@@ -1149,8 +1038,6 @@ body::after{
   filter:
     drop-shadow(0 4px 6px rgba(0,0,0,.35));
 }
-
-/* ----- keadaan awal: tenang ----- */
 
 .figur{
   transform-origin:100px 200px;
@@ -1195,9 +1082,6 @@ body::after{
     transform .3s ease,
     opacity .3s ease;
 }
-
-
-/* ----- setelah kado dipencet: bahagia ----- */
 
 .biskuit.senang .mata-buka,
 .biskuit.senang .senyum-kecil{
@@ -1258,7 +1142,6 @@ body::after{
   }
 }
 
-
 @media(max-width:600px){
 
   .biskuit{
@@ -1283,11 +1166,6 @@ body::after{
   }
 }
 
-
-/* =========================================================
-   ✨ BARU: KERETA RUSA PUTIH + KADO, TERBANG ACAK
-   ========================================================= */
-
 .rusa-terbang{
   position:fixed;
 
@@ -1300,7 +1178,6 @@ body::after{
   z-index:1;
   pointer-events:none;
 
-  /* disembunyikan sampai terbang (diatur script.js) */
   visibility:hidden;
 
   will-change:transform;
@@ -1331,7 +1208,6 @@ body::after{
   }
 }
 
-/* badan rusa naik-turun mengikuti langkah */
 .lompat{
   animation:
     rusaLompat .45s ease-in-out infinite alternate;
@@ -1347,8 +1223,6 @@ body::after{
     transform:translateY(3px) rotate(2deg);
   }
 }
-
-/* ----- gerakan kaki berlari ----- */
 
 .kb{ --d:-.225s; }
 .lompat.l2{ --fase:-.2s; }
@@ -1402,8 +1276,6 @@ body::after{
   to{   transform:rotate(-70deg); }
 }
 
-/* ----- kerlip bintang ----- */
-
 .kerlip{
   transform-box:fill-box;
   transform-origin:center;
@@ -1444,28 +1316,240 @@ body::after{
   }
 }
 
+.lampu-run{
+  position:relative;
+  display:inline-block;
 
-/* ----- kado yang jatuh dari kereta ----- */
+  isolation:isolate;
+}
 
-.kado-jatuh{
+.lampu-s{
+  position:absolute;
+
+  left:0;
+  top:0;
+
+  width:100%;
+  height:100%;
+
+  overflow:visible;
+
+  z-index:-1;
+  pointer-events:none;
+}
+
+.ls{
+  fill:none;
+
+  font:inherit;
+  text-shadow:none;
+
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.ls-kabel{
+  stroke:#0b2a14;
+  stroke-width:.035em;
+}
+
+.ls-a,
+.ls-b,
+.ls-c,
+.ls-d{
+  stroke-width:.17em;
+  stroke-dasharray:0 1.2em;
+
+  animation:
+    kedipLampuHuruf 1.3s ease-in-out infinite alternate;
+}
+
+.ls-a{
+  stroke:#ff2d4d;
+  stroke-dashoffset:0;
+  filter:drop-shadow(0 0 .09em #ff2d4d);
+}
+
+.ls-b{
+  stroke:#ffe92d;
+  stroke-dashoffset:-.3em;
+  animation-delay:.3s;
+  filter:drop-shadow(0 0 .09em #ffe92d);
+}
+
+.ls-c{
+  stroke:#37ff7a;
+  stroke-dashoffset:-.6em;
+  animation-delay:.6s;
+  filter:drop-shadow(0 0 .09em #37ff7a);
+}
+
+.ls-d{
+  stroke:#35a7ff;
+  stroke-dashoffset:-.9em;
+  animation-delay:.9s;
+  filter:drop-shadow(0 0 .09em #35a7ff);
+}
+
+@keyframes kedipLampuHuruf{
+
+  from{
+    opacity:1;
+  }
+
+  to{
+    opacity:.55;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  .ls{
+    animation:none;
+  }
+}
+
+.kotak-surat{
   position:fixed;
 
-  top:0;
-  left:0;
+  right:12px;
+  bottom:0;
 
-  z-index:1;
-  pointer-events:none;
+  width:152px;
+  height:160px;
 
-  will-change:transform;
-}
+  transform-origin:50% 100%;
 
-.kado-jatuh div{
-  will-change:transform;
-}
+  padding:0;
+  border:0;
 
-.kado-jatuh svg{
-  display:block;
+  background:none;
+
+  z-index:60;
+
+  cursor:pointer;
 
   filter:
-    drop-shadow(0 2px 3px rgba(0,0,0,.35));
+    drop-shadow(0 6px 8px rgba(0,0,0,.35));
+
+  transition:
+    transform .2s ease;
 }
+
+.kotak-surat:hover{
+  transform:scale(1.04);
+}
+
+.kotak-surat:active{
+  transform:scale(.97);
+}
+
+.kotak-surat:focus-visible{
+  outline:3px solid #fff;
+  outline-offset:2px;
+  border-radius:12px;
+}
+
+.kotak-surat svg{
+  display:block;
+  overflow:visible;
+}
+
+.pintu{
+  transform-box:fill-box;
+  transform-origin:left center;
+
+  transition:
+    transform .38s ease;
+}
+
+.kotak-surat.terbuka .pintu{
+  transform:scaleX(.14);
+}
+
+.surat-intip{
+  opacity:0;
+
+  transform:translateY(12px);
+
+  transition:
+    opacity .3s ease .12s,
+    transform .35s ease .12s;
+}
+
+.kotak-surat.terbuka .surat-intip{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.kotak-surat.bergetar{
+  animation:
+    kotakGoyang .3s ease-in-out infinite alternate;
+}
+
+@keyframes kotakGoyang{
+
+  from{
+    transform:rotate(-5.5deg);
+  }
+
+  to{
+    transform:rotate(5.5deg);
+  }
+}
+
+.kotak-surat.menolak{
+  animation:
+    kotakMenolak .45s ease;
+}
+
+@keyframes kotakMenolak{
+
+  0%,100%{ transform:translateX(0); }
+  20%{     transform:translateX(-6px); }
+  40%{     transform:translateX(6px); }
+  60%{     transform:translateX(-4px); }
+  80%{     transform:translateX(4px); }
+}
+
+@media(max-width:600px){
+
+  .kotak-surat{
+    width:137px;
+    height:130px;
+
+    right:8px;
+  }
+}
+
+[hidden]{
+  display:none!important;
+}
+
+.sr-only{
+  position:absolute;
+
+  width:1px;
+  height:1px;
+
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+  white-space:nowrap;
+}
+
+.surat-overlay{
+  position:fixed;
+  inset:0;
+
+  z-index:200;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:16px;
+
+  background:rgba(25,6,10,.55);
+
+  -webkit-backd
