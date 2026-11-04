@@ -1,15 +1,8 @@
-/* =====================================================
-   MUSIK
-   ===================================================== */
-
 const music =
   document.getElementById("music");
 
 const musicButton =
   document.getElementById("musicButton");
-
-
-/* Tombol play / pause */
 
 musicButton.addEventListener(
   "click",
@@ -35,9 +28,6 @@ musicButton.addEventListener(
   }
 );
 
-
-/* Saat musik mulai */
-
 music.addEventListener(
   "play",
   ()=>{
@@ -48,9 +38,6 @@ music.addEventListener(
 
   }
 );
-
-
-/* Saat musik berhenti */
 
 music.addEventListener(
   "pause",
@@ -63,21 +50,10 @@ music.addEventListener(
   }
 );
 
-
-/* =====================================================
-   GAMBAR KARTU
-   ===================================================== */
-
 const giftImage =
   document.getElementById(
     "giftImage"
   );
-
-
-/*
-  Klik gambar kartu untuk
-  menyimpan gift.jpg
-*/
 
 giftImage.addEventListener(
   "click",
@@ -105,11 +81,6 @@ giftImage.addEventListener(
   }
 );
 
-
-/* =====================================================
-   SALJU
-   ===================================================== */
-
 const snow =
   document.createElement(
     "div"
@@ -121,7 +92,6 @@ snow.className =
 document.body.appendChild(
   snow
 );
-
 
 for(let i=0;i<55;i++){
 
@@ -142,7 +112,6 @@ for(let i=0;i<55;i++){
   const sway =
     Math.random()*3+2.5;
 
-
   flake.style.left =
     Math.random()*100+"vw";
 
@@ -161,17 +130,11 @@ for(let i=0;i<55;i++){
   flake.style.animationDelay =
     `${-Math.random()*fall}s,${-Math.random()*sway}s`;
 
-
   snow.appendChild(
     flake
   );
 
 }
-
-
-/* =====================================================
-   ROTASI 3D
-   ===================================================== */
 
 function rotate3D(
   viewport,
@@ -196,7 +159,6 @@ function rotate3D(
 
   let idle;
 
-
   const clamp =
     opt.clamp ||
     [-60,60];
@@ -205,18 +167,12 @@ function rotate3D(
     opt.sensitivity ||
     .4;
 
-
-  /* Terapkan rotasi */
-
   const apply=()=>{
 
     target.style.transform =
       `rotateX(${x}deg) rotateY(${y}deg)`;
 
   };
-
-
-  /* Hentikan idle */
 
   const stopIdle=()=>{
 
@@ -232,15 +188,11 @@ function rotate3D(
 
   };
 
-
-  /* Mulai idle */
-
   const startIdle=()=>{
 
     stopIdle();
 
     let t=0;
-
 
     const loop=()=>{
 
@@ -258,16 +210,12 @@ function rotate3D(
 
     };
 
-
     idle =
       requestAnimationFrame(
         loop
       );
 
   };
-
-
-  /* Mulai drag */
 
   viewport.addEventListener(
     "pointerdown",
@@ -285,7 +233,6 @@ function rotate3D(
 
       stopIdle();
 
-
       try{
 
         viewport.setPointerCapture(
@@ -297,9 +244,6 @@ function rotate3D(
     }
   );
 
-
-  /* Gerakan drag */
-
   window.addEventListener(
     "pointermove",
     e=>{
@@ -307,13 +251,11 @@ function rotate3D(
       if(!dragging)
         return;
 
-
       const dx =
         e.clientX-lastX;
 
       const dy =
         e.clientY-lastY;
-
 
       if(
         Math.abs(dx)+
@@ -324,13 +266,11 @@ function rotate3D(
 
       }
 
-
       y +=
         dx*sensitivity;
 
       x -=
         dy*sensitivity;
-
 
       x =
         Math.max(
@@ -341,13 +281,11 @@ function rotate3D(
           )
         );
 
-
       lastX =
         e.clientX;
 
       lastY =
         e.clientY;
-
 
       apply();
 
@@ -359,9 +297,6 @@ function rotate3D(
     }
   );
 
-
-  /* Selesai drag / tap */
-
   window.addEventListener(
     "pointerup",
     ()=>{
@@ -369,14 +304,7 @@ function rotate3D(
       if(!dragging)
         return;
 
-
       dragging=false;
-
-
-      /*
-        Jika tidak digeser,
-        dianggap sebagai tap.
-      */
 
       if(
         !moved &&
@@ -386,7 +314,6 @@ function rotate3D(
         opt.tap();
 
       }
-
 
       if(opt.idle){
 
@@ -405,19 +332,12 @@ function rotate3D(
     }
   );
 
-
   apply();
-
 
   if(opt.idle)
     startIdle();
 
 }
-
-
-/* =====================================================
-   ELEMEN KADO
-   ===================================================== */
 
 const boxViewport =
   document.getElementById(
@@ -444,19 +364,12 @@ const card =
     "card3d"
   );
 
-
 let opened=false;
-
-
-/* =====================================================
-   SPARK
-   ===================================================== */
 
 function sparks(){
 
   const rect =
     boxViewport.getBoundingClientRect();
-
 
   const colors=[
     "#fff",
@@ -464,7 +377,6 @@ function sparks(){
     "#ffeaa7",
     "#ff3333"
   ];
-
 
   for(
     let i=0;
@@ -480,7 +392,6 @@ function sparks(){
     s.className =
       "spark";
 
-
     const size =
       5+Math.random()*6;
 
@@ -490,7 +401,6 @@ function sparks(){
 
     const distance =
       60+Math.random()*90;
-
 
     s.style.width =
       size+"px";
@@ -503,7 +413,6 @@ function sparks(){
         i%colors.length
       ];
 
-
     s.style.left =
       rect.left+
       rect.width/2+
@@ -513,7 +422,6 @@ function sparks(){
       rect.top+
       rect.height*.3+
       "px";
-
 
     s.style.setProperty(
       "--dx",
@@ -529,11 +437,9 @@ function sparks(){
       "px"
     );
 
-
     document.body.appendChild(
       s
     );
-
 
     setTimeout(
       ()=>s.remove(),
@@ -543,11 +449,6 @@ function sparks(){
   }
 
 }
-
-
-/* =====================================================
-   ROTASI KADO
-   ===================================================== */
 
 rotate3D(
   boxViewport,
@@ -567,20 +468,12 @@ rotate3D(
 
     idle:true,
 
-
     tap(){
 
       if(opened)
         return;
 
-
       opened=true;
-
-
-      /*
-        MUSIK DIMULAI
-        ketika kado dipencet.
-      */
 
       music.play().catch(
         error=>{
@@ -591,30 +484,19 @@ rotate3D(
         }
       );
 
-
-      /* Buka kado */
-
       box.classList.add(
         "open"
       );
-
-
-      /* ✨ BARU: biskuit jahe senang & melambai */
 
       document
         .querySelector(".biskuit")
         .classList.add("senang");
 
+      ajakKotakSurat();
 
-      /* Spark */
+      goyangkanLonceng();
 
       sparks();
-
-
-      /*
-        Setelah 600ms,
-        tampilkan kartu.
-      */
 
       setTimeout(
         ()=>{
@@ -640,18 +522,10 @@ rotate3D(
   }
 );
 
-
-/* =====================================================
-   ROTASI KARTU
-   ===================================================== */
-
 const cardViewport =
   document.getElementById(
     "cardViewport"
   );
-
-
-/* Hapus animasi masuk */
 
 card.addEventListener(
   "animationend",
@@ -663,9 +537,6 @@ card.addEventListener(
 
   }
 );
-
-
-/* Aktifkan rotasi kartu */
 
 rotate3D(
   cardViewport,
@@ -688,13 +559,6 @@ rotate3D(
   }
 );
 
-
-/* =====================================================
-   ✨ BARU: KERETA RUSA PUTIH + KADO, TERBANG ACAK
-   ===================================================== */
-
-/* salin bentuk rusa ke tiap tempatnya */
-
 document.querySelectorAll(".tempat-rusa").forEach(tempat=>{
 
   const salinan =
@@ -705,7 +569,6 @@ document.querySelectorAll(".tempat-rusa").forEach(tempat=>{
   tempat.appendChild(salinan);
 
 });
-
 
 const rusaEl =
   document.querySelector(".rusa-terbang");
@@ -718,123 +581,15 @@ const hemat =
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
-
 function acak(a, b){
 
   return a + Math.random()*(b-a);
 
 }
 
-
-/* pasangan warna kado: [kotak, pita] */
-
-const warnaKado = [
-  ["#ff4d6d","#ffe066"],
-  ["#3ec7ff","#ffffff"],
-  ["#7bff6b","#ff4d6d"],
-  ["#ffd23f","#ff4d6d"],
-  ["#b57bff","#ffe066"],
-  ["#ff9f1c","#ffffff"],
-  ["#ff6ad5","#ffffff"]
-];
-
-
-/* ---------- kado jatuh ---------- */
-
-function jatuhkanKado(arahX, kecepatan){
-
-  const r =
-    muatanEl.getBoundingClientRect();
-
-  const W = window.innerWidth;
-  const H = window.innerHeight;
-
-  const x = r.left + r.width  * acak(.1,.9);
-  const y = r.top  + r.height * acak(.2,.9);
-
-  /* hanya jatuh bila kereta terlihat di layar */
-  if(x<12 || x>W-12 || y<12 || y>H-60)
-    return false;
-
-  const [c, p] =
-    warnaKado[
-      Math.floor(Math.random()*warnaKado.length)
-    ];
-
-  const u = Math.round(acak(20,34));
-
-  const luar =
-    document.createElement("div");
-
-  luar.className = "kado-jatuh";
-
-  const dalam =
-    document.createElement("div");
-
-  dalam.innerHTML =
-    `<svg viewBox="0 0 40 40" width="${u}" height="${u}">
-       <rect x="4" y="14" width="32" height="24" rx="3" fill="${c}"/>
-       <rect x="2" y="11" width="36" height="8" rx="2.5" fill="${c}"
-             stroke="rgba(0,0,0,.2)" stroke-width="1"/>
-       <rect x="17" y="11" width="6" height="27" fill="${p}"/>
-       <ellipse cx="14.5" cy="8.5" rx="5.5" ry="4" fill="${p}"/>
-       <ellipse cx="25.5" cy="8.5" rx="5.5" ry="4" fill="${p}"/>
-       <circle cx="20" cy="9.5" r="2.6" fill="${p}"/>
-     </svg>`;
-
-  luar.appendChild(dalam);
-  document.body.appendChild(luar);
-
-  const jarak = (H - y) + 60;
-
-  /* jatuh dipercepat — gravitasi besar supaya cepat */
-  const durasi =
-    Math.sqrt(2*jarak/2600) * 1000;
-
-  /* terbawa sedikit ke arah terbang + sebaran acak */
-  const geser =
-    arahX * kecepatan * (durasi/1000) * .6
-    + acak(-40,40);
-
-  const putar =
-    acak(240,720) * (Math.random()<.5 ? -1 : 1);
-
-  luar.animate(
-    [
-      { transform:`translate(${x-u/2}px,${y-u/2}px)` },
-      { transform:`translate(${x-u/2+geser}px,${y-u/2}px)` }
-    ],
-    { duration:durasi, easing:"linear", fill:"forwards" }
-  );
-
-  const jatuh =
-    dalam.animate(
-      [
-        { transform:"translateY(0) rotate(0deg)" },
-        { transform:`translateY(${jarak}px) rotate(${putar}deg)` }
-      ],
-      {
-        duration:durasi,
-        easing:"cubic-bezier(.2,0,.6,.1)",
-        fill:"forwards"
-      }
-    );
-
-  jatuh.onfinish = ()=> luar.remove();
-
-  return true;
-
-}
-
-
-/* ---------- sudut asal ---------- */
-
 const SUDUT = ["kiriAtas","kananAtas","kiriBawah","kananBawah"];
 
 let sudutSebelumnya = null;
-
-
-/* sudut pertama selalu kiri atas, berikutnya acak (selalu berbeda) */
 
 function pilihSudut(){
 
@@ -850,9 +605,6 @@ function pilihSudut(){
 
 }
 
-
-/* ---------- satu kali terbang ---------- */
-
 function terbang(){
 
   const W = window.innerWidth;
@@ -865,7 +617,6 @@ function terbang(){
 
   sudutSebelumnya = sudutAsal;
 
-  /* titik sudut layar & arah masuk ke dalam layar */
   const kanan = sudutAsal.startsWith("kanan");
   const bawah = sudutAsal.endsWith("Bawah");
 
@@ -878,13 +629,11 @@ function terbang(){
   const dx = Math.cos(sudut) * (kanan ? -1 : 1);
   const dy = Math.sin(sudut) * (bawah ? -1 : 1);
 
-  /* tegak lurus arah terbang (untuk goyangan) */
   const nx = -dy;
   const ny =  dx;
 
   const s0 = -(w/2 + h/2 + 20);
 
-  /* jarak sampai keluar dari sisi seberang */
   const sX = dx>0 ? (W-cx0)/dx : (0-cx0)/dx;
   const sY = dy>0 ? (H-cy0)/dy : (0-cy0)/dy;
 
@@ -900,14 +649,12 @@ function terbang(){
   const durasi =
     (s1-s0)/kecepatan*1000;
 
-  /* ujung hidung rusa melewati sudut pada t ini */
   const tSudut =
     (-w/2 - s0)/(s1-s0);
 
   const N = 48;
   const frame = [];
 
-  /* menghadap kiri bila terbang ke kiri */
   const balik = dx < 0;
 
   for(let i=0;i<=N;i++){
@@ -915,7 +662,6 @@ function terbang(){
     const t = i/N;
     const s = s0 + (s1-s0)*t;
 
-    /* goyangan baru dimulai setelah keluar dari sudut */
     const env =
       Math.min(1, Math.max(0,(t-tSudut)/.25));
 
@@ -957,60 +703,603 @@ function terbang(){
 
   rusaEl.style.visibility = "visible";
 
-  /* kado jatuh berkelompok selama terbang */
-
-  let terakhir = 0;
-  let jumlah = 0;
-
-  const pewaktu = setInterval(()=>{
-
-    const sekarang = performance.now();
-
-    if(
-      jumlah < 0 &&
-      sekarang - terakhir > 350 &&
-      Math.random() < .6
-    ){
-
-      /* satu rentetan 2–4 kado hampir bersamaan */
-      const banyak =
-        1 + Math.floor(Math.random()*1);
-
-      for(let k=0;k<banyak;k++){
-
-        setTimeout(()=>{
-
-          if(jatuhkanKado(dx, kecepatan))
-            jumlah++;
-
-        }, k*acak(30,130));
-
-      }
-
-      terakhir = sekarang;
-
-    }
-
-  }, 160);
-
   anim.onfinish = ()=>{
-
-    clearInterval(pewaktu);
 
     rusaEl.style.visibility = "hidden";
 
     anim.cancel();
 
-    /* cepat kembali dari sudut lain */
     setTimeout(terbang, acak(300,1100));
 
   };
 
 }
 
-
 if(!hemat){
 
   setTimeout(terbang, 500);
 
 }
+
+const KONFIG_SURAT = {
+  web3formsKey:     "",
+  cloudinaryCloud:  "",
+  cloudinaryPreset: ""
+};
+
+const kotakSurat   = document.getElementById("kotakSurat");
+const suratOverlay = document.getElementById("suratOverlay");
+const suratTutup   = document.getElementById("suratTutup");
+const suratNama    = document.getElementById("suratNama");
+const suratCatatan = document.getElementById("suratCatatan");
+const suratBerkas  = document.getElementById("suratBerkas");
+const suratPratinjau = document.getElementById("suratPratinjau");
+const suratFoto    = suratPratinjau.querySelector("img");
+const suratHapusFoto = document.getElementById("suratHapusFoto");
+const suratKirim   = document.getElementById("suratKirim");
+const suratStatus  = document.getElementById("suratStatus");
+const suratBot     = document.getElementById("suratBot");
+
+let gambarBlob = null;
+let gambarUrl  = null;
+
+function tampilStatus(teks, jenis){
+
+  suratStatus.textContent = teks || "";
+
+  suratStatus.className =
+    "kertas-status" + (jenis ? " " + jenis : "");
+
+}
+
+function ajakKotakSurat(){
+
+  kotakSurat.classList.add("terbuka","bergetar");
+
+  setTimeout(()=>{
+
+    kotakSurat.classList.remove("bergetar");
+
+    if(suratOverlay.hidden)
+      kotakSurat.classList.remove("terbuka");
+
+  }, 2400);
+
+}
+
+function bukaSurat(){
+
+  if(!opened){
+
+    kotakSurat.classList.add("menolak");
+
+    setTimeout(()=>{
+
+      kotakSurat.classList.remove("menolak");
+
+    }, 480);
+
+    return;
+
+  }
+
+  kotakSurat.classList.add("terbuka");
+
+  setTimeout(()=>{
+
+    suratOverlay.hidden = false;
+
+    kotakSurat.classList.add("terbuka");
+
+    document.body.style.overflow = "hidden";
+
+    suratCatatan.focus({ preventScroll:true });
+
+  }, 380);
+
+}
+
+function tutupSurat(){
+
+  suratOverlay.hidden = true;
+
+  document.body.style.overflow = "";
+
+  kotakSurat.classList.remove("terbuka");
+
+}
+
+kotakSurat.addEventListener("click", bukaSurat);
+
+suratTutup.addEventListener("click", tutupSurat);
+
+suratOverlay.addEventListener("pointerdown", e=>{
+
+  if(e.target === suratOverlay)
+    tutupSurat();
+
+});
+
+window.addEventListener("keydown", e=>{
+
+  if(e.key === "Escape" && !suratOverlay.hidden)
+    tutupSurat();
+
+});
+
+async function kecilkanGambar(file){
+
+  let bmp;
+
+  try{
+
+    bmp = await createImageBitmap(
+      file,
+      { imageOrientation:"from-image" }
+    );
+
+  }catch{
+
+    bmp = await new Promise((ok,gagal)=>{
+
+      const img = new Image();
+
+      img.onload  = ()=> ok(img);
+      img.onerror = gagal;
+
+      img.src = URL.createObjectURL(file);
+
+    });
+
+  }
+
+  const lebar  = bmp.width  || bmp.naturalWidth;
+  const tinggi = bmp.height || bmp.naturalHeight;
+
+  const skala =
+    Math.min(1, 1280 / Math.max(lebar, tinggi));
+
+  const kanvas =
+    document.createElement("canvas");
+
+  kanvas.width  = Math.round(lebar  * skala);
+  kanvas.height = Math.round(tinggi * skala);
+
+  kanvas.getContext("2d")
+    .drawImage(bmp, 0, 0, kanvas.width, kanvas.height);
+
+  return new Promise(ok=>{
+
+    kanvas.toBlob(ok, "image/jpeg", .82);
+
+  });
+
+}
+
+function hapusGambar(){
+
+  if(gambarUrl)
+    URL.revokeObjectURL(gambarUrl);
+
+  gambarBlob = null;
+  gambarUrl  = null;
+
+  suratBerkas.value = "";
+  suratPratinjau.hidden = true;
+  suratFoto.removeAttribute("src");
+
+}
+
+suratBerkas.addEventListener("change", async ()=>{
+
+  const file = suratBerkas.files[0];
+
+  if(!file)
+    return;
+
+  if(!file.type.startsWith("image/")){
+
+    tampilStatus("Pilih file gambar saja ya.", "salah");
+
+    suratBerkas.value = "";
+
+    return;
+
+  }
+
+  if(file.size > 15*1024*1024){
+
+    tampilStatus("Gambar terlalu besar (maksimal 15 MB).", "salah");
+
+    suratBerkas.value = "";
+
+    return;
+
+  }
+
+  try{
+
+    tampilStatus("Menyiapkan gambar…");
+
+    const blob = await kecilkanGambar(file);
+
+    if(gambarUrl)
+      URL.revokeObjectURL(gambarUrl);
+
+    gambarBlob = blob;
+    gambarUrl  = URL.createObjectURL(blob);
+
+    suratFoto.src = gambarUrl;
+    suratPratinjau.hidden = false;
+
+    tampilStatus("");
+
+  }catch{
+
+    tampilStatus("Gambar tidak bisa dibaca.", "salah");
+
+    suratBerkas.value = "";
+
+  }
+
+});
+
+suratHapusFoto.addEventListener("click", hapusGambar);
+
+async function kirimSurat(){
+
+  const catatan = suratCatatan.value.trim();
+  const nama    = suratNama.value.trim();
+
+  if(suratBot.checked)
+    return;
+
+  if(!opened){
+
+    return;
+
+  }
+
+  if(!catatan && !gambarBlob){
+
+    tampilStatus("Tulis catatan atau pilih gambar dulu ya.", "salah");
+
+    return;
+
+  }
+
+  if(!KONFIG_SURAT.web3formsKey){
+
+    tampilStatus(
+      "Fitur kirim belum diaktifkan oleh pembuat website.",
+      "salah"
+    );
+
+    return;
+
+  }
+
+  suratKirim.disabled = true;
+
+  tampilStatus("Mengirim…");
+
+  try{
+
+    let pesan = catatan;
+    let lampiran = null;
+
+    if(gambarBlob){
+
+      if(
+        KONFIG_SURAT.cloudinaryCloud &&
+        KONFIG_SURAT.cloudinaryPreset
+      ){
+
+        const unggah = new FormData();
+
+        unggah.append("file", gambarBlob, "gambar.jpg");
+        unggah.append("upload_preset", KONFIG_SURAT.cloudinaryPreset);
+
+        const res = await fetch(
+          `https://api.cloudinary.com/v1_1/${KONFIG_SURAT.cloudinaryCloud}/image/upload`,
+          { method:"POST", body:unggah }
+        );
+
+        const data = await res.json();
+
+        if(!res.ok || !data.secure_url)
+          throw new Error("unggah gambar gagal");
+
+        pesan += (pesan ? "\n\n" : "") + "Gambar: " + data.secure_url;
+
+      }else{
+
+        lampiran = gambarBlob;
+
+      }
+
+    }
+
+    const kirim = new FormData();
+
+    kirim.append("access_key", KONFIG_SURAT.web3formsKey);
+    kirim.append("subject", "Pesan baru dari website Natal");
+    kirim.append("from_name", "Kotak surat website Natal");
+    kirim.append("name", nama || "Tanpa nama");
+    kirim.append("message", pesan || "(hanya gambar)");
+
+    if(lampiran)
+      kirim.append("attachment", lampiran, "gambar.jpg");
+
+    const res2 = await fetch(
+      "https://api.web3forms.com/submit",
+      { method:"POST", body:kirim }
+    );
+
+    const hasil = await res2.json();
+
+    if(!hasil.success)
+      throw new Error(hasil.message || "gagal");
+
+    tampilStatus("Terkirim. Terima kasih!", "berhasil");
+
+    suratCatatan.value = "";
+    suratNama.value = "";
+
+    hapusGambar();
+
+    setTimeout(()=>{
+
+      tutupSurat();
+      tampilStatus("");
+
+    }, 1600);
+
+  }catch(error){
+
+    console.log("Gagal mengirim:", error);
+
+    tampilStatus(
+      "Belum berhasil terkirim. Coba lagi nanti ya.",
+      "salah"
+    );
+
+  }finally{
+
+    suratKirim.disabled = false;
+
+  }
+
+}
+
+suratKirim.addEventListener("click", kirimSurat);
+
+function pasangLampuHuruf(){
+
+  const NS = "http://www.w3.org/2000/svg";
+
+  document.querySelectorAll(".lampu-run").forEach(potongan=>{
+
+    potongan
+      .querySelectorAll(":scope > .lampu-s")
+      .forEach(e=> e.remove());
+
+    let teks = "";
+
+    potongan.childNodes.forEach(n=>{
+
+      if(n.nodeType === 3)
+        teks += n.nodeValue;
+
+    });
+
+    teks = teks.trim();
+
+    if(!teks)
+      return;
+
+    const tanda =
+      document.createElement("i");
+
+    tanda.style.cssText =
+      "display:inline-block;width:0;height:0;vertical-align:baseline";
+
+    potongan.appendChild(tanda);
+
+    const dasar =
+      tanda.getBoundingClientRect().bottom -
+      potongan.getBoundingClientRect().top;
+
+    tanda.remove();
+
+    const svg =
+      document.createElementNS(NS, "svg");
+
+    svg.setAttribute("class", "lampu-s");
+    svg.setAttribute("aria-hidden", "true");
+
+    ["ls-kabel","ls-a","ls-b","ls-c","ls-d"].forEach(kelas=>{
+
+      const t =
+        document.createElementNS(NS, "text");
+
+      t.setAttribute("class", "ls " + kelas);
+      t.setAttribute("x", "0");
+      t.setAttribute("y", dasar.toFixed(1));
+
+      t.textContent = teks;
+
+      svg.appendChild(t);
+
+    });
+
+    potongan.appendChild(svg);
+
+  });
+
+}
+
+pasangLampuHuruf();
+
+if(document.fonts && document.fonts.ready)
+  document.fonts.ready.then(pasangLampuHuruf);
+
+window.addEventListener("resize", pasangLampuHuruf);
+
+let audioCtx = null;
+
+function suaraLonceng(nada){
+
+  const AC =
+    window.AudioContext || window.webkitAudioContext;
+
+  if(!AC)
+    return;
+
+  if(!audioCtx)
+    audioCtx = new AC();
+
+  if(audioCtx.state === "suspended")
+    audioCtx.resume();
+
+  const t = audioCtx.currentTime;
+
+  const utama = audioCtx.createGain();
+  const kompresor = audioCtx.createDynamicsCompressor();
+
+  utama.gain.value = .75;
+  utama.connect(kompresor);
+  kompresor.connect(audioCtx.destination);
+
+  const dasar =
+    nada * (0.99 + Math.random()*.02);
+
+  const bagian = [
+    [1,    1,   2.4],
+    [2.76, .55, 1.5],
+    [5.4,  .32, .9],
+    [8.93, .16, .5],
+    [11.3, .08, .3]
+  ];
+
+  bagian.forEach(([rasio, kuat, lama])=>{
+
+    [0, 2.5].forEach((geser, i)=>{
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.value = dasar*rasio + geser;
+
+      gain.gain.setValueAtTime(0, t);
+
+      gain.gain.linearRampToValueAtTime(
+        kuat * (i ? .5 : 1),
+        t + .004
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        .0001,
+        t + lama
+      );
+
+      osc.connect(gain);
+      gain.connect(utama);
+
+      osc.start(t);
+      osc.stop(t + lama + .05);
+
+    });
+
+  });
+
+  const panjang =
+    Math.floor(audioCtx.sampleRate * .03);
+
+  const penyangga =
+    audioCtx.createBuffer(1, panjang, audioCtx.sampleRate);
+
+  const data = penyangga.getChannelData(0);
+
+  for(let i=0;i<panjang;i++)
+    data[i] = (Math.random()*2-1) * (1 - i/panjang);
+
+  const derau = audioCtx.createBufferSource();
+  derau.buffer = penyangga;
+
+  const saring = audioCtx.createBiquadFilter();
+  saring.type = "highpass";
+  saring.frequency.value = 4500;
+
+  const gainDerau = audioCtx.createGain();
+  gainDerau.gain.value = .25;
+
+  derau.connect(saring);
+  saring.connect(gainDerau);
+  gainDerau.connect(utama);
+
+  derau.start(t);
+
+}
+
+document.querySelectorAll(".lonceng-ayun").forEach(lonceng=>{
+
+  let terakhir = 0;
+
+  function bunyikan(){
+
+    const sekarang = performance.now();
+
+    if(sekarang - terakhir < 220)
+      return;
+
+    terakhir = sekarang;
+
+    lonceng.classList.remove("berayun");
+
+    void lonceng.getBoundingClientRect();
+
+    lonceng.classList.add("berayun");
+
+    suaraLonceng(parseFloat(lonceng.dataset.nada) || 880);
+
+  }
+
+  lonceng.addEventListener("animationend", e=>{
+
+    if(e.animationName === "loncengBunyi")
+      lonceng.classList.remove("berayun");
+
+  });
+
+  lonceng.addEventListener("pointerdown", e=>{
+
+    e.preventDefault();
+
+    bunyikan();
+
+  });
+
+  lonceng.addEventListener("pointermove", e=>{
+
+    if(e.buttons)
+      bunyikan();
+
+  });
+
+  lonceng.addEventListener("keydown", e=>{
+
+    if(e.key === "Enter" || e.key === " "){
+
+      e.preventDefault();
+
+      bunyikan();
+
+    }
+
+  });
+
+});
+
+function goyangkanLonce
