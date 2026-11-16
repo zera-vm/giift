@@ -494,7 +494,7 @@ rotate3D(
 
       ajakKotakSurat();
 
-      goyangkanLonceng();
+      goyangkanHiasan();
 
       sparks();
 
@@ -1146,182 +1146,119 @@ if(document.fonts && document.fonts.ready)
 
 window.addEventListener("resize", pasangLampuHuruf);
 
-let audioCtx = null;
 
-function suaraLonceng(nada){
+const loncengDekor = document.querySelector(".hiasan-lonceng");
+const gantungWadah = document.querySelector(".hiasan-gantung");
+const gantungList = Array.from(document.querySelectorAll(".gantung"));
 
-  const AC =
-    window.AudioContext || window.webkitAudioContext;
+const terakhirGoyang = new WeakMap();
 
-  if(!AC)
+function goyang(el, arah){
+
+  const sekarang = performance.now();
+
+  if(sekarang - (terakhirGoyang.get(el) || 0) < 450)
     return;
 
-  if(!audioCtx)
-    audioCtx = new AC();
+  terakhirGoyang.set(el, sekarang);
 
-  if(audioCtx.state === "suspended")
-    audioCtx.resume();
+  el.style.setProperty("--arah", arah);
 
-  const t = audioCtx.currentTime;
+  el.classList.remove("berayun");
 
-  const utama = audioCtx.createGain();
-  const kompresor = audioCtx.createDynamicsCompressor();
+  void el.getBoundingClientRect();
 
-  utama.gain.value = .75;
-  utama.connect(kompresor);
-  kompresor.connect(audioCtx.destination);
-
-  const dasar =
-    nada * (0.99 + Math.random()*.02);
-
-  const bagian = [
-    [1,    1,   2.4],
-    [2.76, .55, 1.5],
-    [5.4,  .32, .9],
-    [8.93, .16, .5],
-    [11.3, .08, .3]
-  ];
-
-  bagian.forEach(([rasio, kuat, lama])=>{
-
-    [0, 2.5].forEach((geser, i)=>{
-
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-
-      osc.type = "sine";
-      osc.frequency.value = dasar*rasio + geser;
-
-      gain.gain.setValueAtTime(0, t);
-
-      gain.gain.linearRampToValueAtTime(
-        kuat * (i ? .5 : 1),
-        t + .004
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        .0001,
-        t + lama
-      );
-
-      osc.connect(gain);
-      gain.connect(utama);
-
-      osc.start(t);
-      osc.stop(t + lama + .05);
-
-    });
-
-  });
-
-  const panjang =
-    Math.floor(audioCtx.sampleRate * .03);
-
-  const penyangga =
-    audioCtx.createBuffer(1, panjang, audioCtx.sampleRate);
-
-  const data = penyangga.getChannelData(0);
-
-  for(let i=0;i<panjang;i++)
-    data[i] = (Math.random()*2-1) * (1 - i/panjang);
-
-  const derau = audioCtx.createBufferSource();
-  derau.buffer = penyangga;
-
-  const saring = audioCtx.createBiquadFilter();
-  saring.type = "highpass";
-  saring.frequency.value = 4500;
-
-  const gainDerau = audioCtx.createGain();
-  gainDerau.gain.value = .25;
-
-  derau.connect(saring);
-  saring.connect(gainDerau);
-  gainDerau.connect(utama);
-
-  derau.start(t);
+  el.classList.add("berayun");
 
 }
 
-document.querySelectorAll(".lonceng-ayun").forEach(lonceng=>{
+function pasangSelesai(el){
 
-  let terakhir = 0;
+  el.addEventListener("animationend", e=>{
 
-  function bunyikan(){
-
-    const sekarang = performance.now();
-
-    if(sekarang - terakhir < 220)
-      return;
-
-    terakhir = sekarang;
-
-    lonceng.classList.remove("berayun");
-
-    void lonceng.getBoundingClientRect();
-
-    lonceng.classList.add("berayun");
-
-    suaraLonceng(parseFloat(lonceng.dataset.nada) || 880);
-
-  }
-
-  lonceng.addEventListener("animationend", e=>{
-
-    if(e.animationName === "loncengBunyi")
-      lonceng.classList.remove("berayun");
+    if(e.target === el && /Goyang$/.test(e.animationName))
+      el.classList.remove("berayun");
 
   });
 
-  lonceng.addEventListener("pointerdown", e=>{
+}
 
-    e.preventDefault();
+pasangSelesai(loncengDekor);
+gantungList.forEach(pasangSelesai);
 
-    bunyikan();
+let xTerakhir = null;
 
-  });
+function arahGeser(e){
 
-  lonceng.addEventListener("pointermove", e=>{
+  const arah =
+    xTerakhir === null || e.clientX >= xTerakhir ? 1 : -1;
 
-    if(e.buttons)
-      bunyikan();
+  xTerakhir = e.clientX;
 
-  });
+  return arah;
 
-  lonceng.addEventListener("keydown", e=>{
+}
 
-    if(e.key === "Enter" || e.key === " "){
+function sentuhan(e){
 
-      e.preventDefault();
+  return e.pointerType === "mouse" || e.buttons > 0 || e.type === "pointerdown";
 
-      bunyikan();
+}
 
-    }
+loncengDekor.addEventListener("pointermove", e=>{
 
-  });
+  const arah = arahGeser(e);
+
+  if(sentuhan(e))
+    goyang(loncengDekor, arah);
 
 });
 
-function goyangkanLonceng(){
+loncengDekor.addEventListener("pointerdown", e=>{
 
-  document.querySelectorAll(".lonceng-ayun").forEach((lonceng,i)=>{
+  xTerakhir = e.clientX;
 
-    const bunyikan = ()=>{
+  goyang(loncengDekor, 1);
 
-      lonceng.classList.remove("berayun");
+});
 
-      void lonceng.getBoundingClientRect();
+function usapGantung(e){
 
-      lonceng.classList.add("berayun");
+  const arah = arahGeser(e);
 
-      suaraLonceng(parseFloat(lonceng.dataset.nada) || 880);
+  if(!sentuhan(e))
+    return;
 
-    };
+  gantungList.forEach(g=>{
 
-    if(i === 0)
-      bunyikan();
-    else
-      setTimeout(bunyikan, i*140);
+    const r = g.getBoundingClientRect();
+
+    if(
+      e.clientX >= r.left - 8 &&
+      e.clientX <= r.right + 8 &&
+      e.clientY >= r.top - 8 &&
+      e.clientY <= r.bottom + 8
+    )
+      goyang(g, arah);
+
+  });
+
+}
+
+gantungWadah.addEventListener("pointermove", usapGantung);
+gantungWadah.addEventListener("pointerdown", usapGantung);
+
+function goyangkanHiasan(){
+
+  goyang(loncengDekor, 1);
+
+  gantungList.forEach((g,i)=>{
+
+    setTimeout(()=>{
+
+      goyang(g, i % 2 ? -1 : 1);
+
+    }, 80 + i*85);
 
   });
 
